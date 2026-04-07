@@ -83,6 +83,7 @@ def evaluate_model(model_path):
             all_labels2.extend(label2.cpu().numpy())
             all_preds2.extend(preds2.cpu().numpy())
             all_labels3.extend(label3.cpu().numpy())
+            all_preds3.extend(preds3.cpu().numpy())
     
     # 计算评估指标
     def calculate_metrics(labels, preds, label_names):
@@ -93,7 +94,8 @@ def evaluate_model(model_path):
         print(f'召回率: {recall:.4f}')
         print(f'F1分数: {f1:.4f}')
         print('各标签详细指标:')
-        precision, recall, f1, support = precision_recall_fscore_support(labels, preds)
+        # 使用labels参数指定所有可能的类别，确保为每个标签计算指标
+        precision, recall, f1, support = precision_recall_fscore_support(labels, preds, labels=range(len(label_names)))
         for i, label in enumerate(label_names):
             print(f'标签 {label}: 精确率={precision[i]:.4f}, 召回率={recall[i]:.4f}, F1={f1[i]:.4f}, 支持数={support[i]}')
     

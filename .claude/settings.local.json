@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python evaluate_models.py)",
+      "Bash(D:\\\\other\\\\tool\\\\anaconda\\\\envs\\\\pytorch\\\\python.exe evaluate_models.py)",
+      "Bash(\"D:\\\\other\\\\tool\\\\anaconda\\\\envs\\\\pytorch\\\\python.exe\" -m pip list | grep -E \"\\(torch|transformers\\)\")",
+      "Bash(\"D:\\\\other\\\\tool\\\\anaconda\\\\envs\\\\pytorch\\\\python.exe\" -m pip install --upgrade transformers -i https://pypi.tuna.tsinghua.edu.cn/simple)",
+      "Bash(\"D:\\\\other\\\\tool\\\\anaconda\\\\envs\\\\pytorch\\\\python.exe\" -m pip uninstall transformers -y && \"D:\\\\other\\\\tool\\\\anaconda\\\\envs\\\\pytorch\\\\python.exe\" -m pip install transformers -i https://pypi.tuna.tsinghua.edu.cn/simple)"
+    ]
+  }
+}

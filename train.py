@@ -19,7 +19,7 @@ from model import BertMultiTask
 def train_model():
     # 配置参数
     batch_size = 16
-    epochs = 5
+    epochs = 3
     learning_rate = 2e-5
     model_name = 'bert-base-chinese'
     
