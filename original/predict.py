@@ -90,7 +90,7 @@ def main():
     ]
     
     # 模型路径
-    model_path = 'models/bert_multitask_epoch5.pt'
+    model_path = 'models/bert_multitask_epoch1.pt'
     
     # 预测
     results = predict(sample_texts, model_path)

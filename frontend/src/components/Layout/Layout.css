@@ -1,0 +1,26 @@
+.header {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+  z-index: 1;
+}
+
+.logo h1 {
+  color: #1890ff;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0 24px;
+}
+
+.sidebar {
+  background: #001529;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 64px;
+    z-index: 999;
+  }
+}

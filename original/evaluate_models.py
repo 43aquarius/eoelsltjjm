@@ -30,7 +30,7 @@ def evaluate_model(model_path):
     df, le1, le2, le3 = encode_labels(df)
     
     # 只使用前5000条数据进行测试，加快评估速度
-    df = df.head(5000)
+    df = df.head(50000)
     print(f'使用数据量: {len(df)}')
     
     # 获取标签数量
@@ -115,7 +115,9 @@ if __name__ == '__main__':
     # 评估两个模型
     model_paths = [
         'models/bert_multitask_epoch1.pt',
-        'models/bert_multitask_epoch2.pt'
+        'models/bert_multitask_epoch2.pt',
+        'models/bert_multitask_epoch3.pt',
+        'models/bert_multitask_epoch4.pt'
     ]
     
     for model_path in model_paths:

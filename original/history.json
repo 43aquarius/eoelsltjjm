@@ -1,0 +1,82 @@
+[
+  {
+    "id": "20260410111254423889",
+    "text": "我使用了ai",
+    "result": {
+      "exists_ai": {
+        "label": "存在人工智能应用",
+        "confidence": 0.9961
+      },
+      "usage_method": {
+        "label": "无法判断",
+        "confidence": 0.4905
+      },
+      "application_type": {
+        "label": "无法判断",
+        "confidence": 0.9416
+      },
+      "timestamp": "2026-04-10T11:12:54.422896"
+    },
+    "model_name": "models\\bert_multitask_epoch3.pt"
+  },
+  {
+    "id": "20260410130356196467",
+    "text": "我用了人工智能\n",
+    "result": {
+      "exists_ai": {
+        "label": "存在人工智能应用",
+        "confidence": 0.9986
+      },
+      "usage_method": {
+        "label": "无法判断",
+        "confidence": 0.8149
+      },
+      "application_type": {
+        "label": "无法判断",
+        "confidence": 0.9521
+      },
+      "timestamp": "2026-04-10T13:03:56.186627"
+    },
+    "model_name": "models\\bert_multitask_epoch3.pt"
+  },
+  {
+    "id": "20260506204801736442",
+    "text": "我用了ai\n",
+    "result": {
+      "exists_ai": {
+        "label": "存在人工智能应用",
+        "confidence": 0.7552
+      },
+      "usage_method": {
+        "label": "无法判断",
+        "confidence": 0.9095
+      },
+      "application_type": {
+        "label": "无法判断",
+        "confidence": 0.7154
+      },
+      "timestamp": "2026-05-06T20:48:01.735436"
+    },
+    "model_name": "models\\bert_multitask_epoch2.pt"
+  },
+  {
+    "id": "20260506205045646956",
+    "text": "我没有用人工智能",
+    "result": {
+      "exists_ai": {
+        "label": "不存在人工智能应用",
+        "confidence": 0.9605
+      },
+      "usage_method": {
+        "label": "不适用",
+        "confidence": 0.9575
+      },
+      "application_type": {
+        "label": "不适用",
+        "confidence": 0.9592
+      },
+      "timestamp": "2026-05-06T20:50:45.645955"
+    },
+    "model_name": "models\\bert_multitask_epoch4.pt"
+  }
+]

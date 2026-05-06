@@ -1,0 +1,12 @@
+transformers
+torch
+pandas
+scikit-learn
+tqdm
+openpyxl
+fastapi
+uvicorn
+python-multipart
+matplotlib
+seaborn
+pyyaml

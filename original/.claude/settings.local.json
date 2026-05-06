@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(D:\\\\other\\\\tool\\\\anaconda\\\\envs\\\\pytorch\\\\python.exe evaluate_models.py)",
+      "Bash(/d/other/tool/anaconda/envs/pytorch/python.exe evaluate_models.py)",
+      "Bash(/d/other/tool/anaconda/envs/pytorch/python.exe app.py)",
+      "Bash(sleep 3 && curl -s http://localhost:8000/ || echo \"Backend not ready yet\")",
+      "Bash(sleep 10 && curl -s http://localhost:8000/ || echo \"Still loading...\")",
+      "Bash(cd /d/file/work/26tongjijianmo/frontend && npm run dev)",
+      "Bash(cd /d/file/work/26tongjijianmo/improved && /d/other/tool/anaconda/envs/pytorch/python.exe evaluate_improved.py)",
+      "Bash(/d/other/tool/anaconda/envs/pytorch/python.exe evaluate_improved.py 2>&1 | grep -A 20 \"总体评估结果\")",
+      "Bash(curl -s http://localhost:8000/api/models)",
+      "Bash(curl -s http://localhost:3000 | head -20)",
+      "Bash(cd /d/file/work/26tongjijianmo && python -c \"import pandas as pd; df = pd.DataFrame\\({'句子': ['公司引入智能生产线，实现生产自动化', '我们使用大数据分析技术优化决策流程', '企业采用传统生产方式，未使用人工智能']}\\); df.to_excel\\('test_batch.xlsx', index=False\\)\")",
+      "Bash(cd /d/file/work/26tongjijianmo/original && curl -X POST -F \"file=@../test_batch.xlsx\" http://localhost:8000/api/batch-predict 2>&1 | head -50)",
+      "Bash(curl -X POST -F \"model_name=models/bert_multitask_epoch3.pt\" http://localhost:8000/api/evaluate 2>&1 | head -50)",
+      "Bash(sleep 10 && curl -s http://localhost:8000/ || echo \"Backend not ready\")",
+      "Bash(sleep 15 && curl -s http://localhost:8000/)",
+      "Bash(curl -X POST -F \"model_name=models/bert_multitask_epoch3.pt\" http://localhost:8000/api/evaluate 2>&1 | tail -20)",
+      "Bash(sleep 10 && curl -s http://localhost:8000/)",
+      "Bash(cd /d/file/work/26tongjijianmo && curl -X POST -F \"file=@test_batch.xlsx\" http://localhost:8000/api/batch-predict 2>&1 | tail -5)",
+      "Bash(curl -s http://localhost:3000 | head -5)",
+      "Bash(curl -s http://localhost:8000/api/models | python -m json.tool 2>/dev/null | head -20)",
+      "Bash(curl -s http://localhost:8000/ && echo -e \"\\\\n\\\\nBackend is running successfully!\")",
+      "Bash(curl -X POST -F \"model_name=models/bert_multitask_epoch3.pt\" http://localhost:8000/api/evaluate 2>&1 | python -c \"import sys; print\\(sys.stdin.read\\(\\)\\)\" | head -50)"
+    ]
+  }
+}

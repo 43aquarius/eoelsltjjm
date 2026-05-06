@@ -5,7 +5,17 @@
       "Bash(D:\\\\other\\\\tool\\\\anaconda\\\\envs\\\\pytorch\\\\python.exe evaluate_models.py)",
       "Bash(\"D:\\\\other\\\\tool\\\\anaconda\\\\envs\\\\pytorch\\\\python.exe\" -m pip list | grep -E \"\\(torch|transformers\\)\")",
       "Bash(\"D:\\\\other\\\\tool\\\\anaconda\\\\envs\\\\pytorch\\\\python.exe\" -m pip install --upgrade transformers -i https://pypi.tuna.tsinghua.edu.cn/simple)",
-      "Bash(\"D:\\\\other\\\\tool\\\\anaconda\\\\envs\\\\pytorch\\\\python.exe\" -m pip uninstall transformers -y && \"D:\\\\other\\\\tool\\\\anaconda\\\\envs\\\\pytorch\\\\python.exe\" -m pip install transformers -i https://pypi.tuna.tsinghua.edu.cn/simple)"
+      "Bash(\"D:\\\\other\\\\tool\\\\anaconda\\\\envs\\\\pytorch\\\\python.exe\" -m pip uninstall transformers -y && \"D:\\\\other\\\\tool\\\\anaconda\\\\envs\\\\pytorch\\\\python.exe\" -m pip install transformers -i https://pypi.tuna.tsinghua.edu.cn/simple)",
+      "Bash(\"D:\\\\other\\\\tool\\\\anaconda\\\\envs\\\\pytorch\\\\python.exe\" compare_improvements.py)",
+      "Bash(\"D:\\\\other\\\\tool\\\\anaconda\\\\envs\\\\pytorch\\\\python.exe\" train_improved.py)",
+      "Bash(cd original:*)",
+      "Bash(cd improved:*)",
+      "Bash(D:/other/tool/anaconda/envs/pytorch/python.exe -c \"import torch; print\\(f'CUDA available: {torch.cuda.is_available\\(\\)}'\\); print\\(f'CUDA version: {torch.version.cuda}'\\); print\\(f'GPU count: {torch.cuda.device_count\\(\\)}'\\); print\\(f'GPU name: {torch.cuda.get_device_name\\(0\\) if torch.cuda.is_available\\(\\) else \\\\\"N/A\\\\\"}'\\)\")",
+      "Bash(D:/other/tool/anaconda/envs/pytorch/python.exe -c \"import torch; print\\(f'PyTorch version: {torch.__version__}'\\)\")",
+      "Bash(nvidia-smi)",
+      "Bash(D:/other/tool/anaconda/envs/pytorch/Scripts/pip.exe uninstall:*)",
+      "Bash(D:/other/tool/anaconda/envs/pytorch/Scripts/pip.exe install:*)",
+      "Bash(dir /b \"D:\\\\file\\\\work\\\\26tongjijianmo\\\\original\")"
     ]
   }
 }
