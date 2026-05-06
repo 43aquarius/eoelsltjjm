@@ -1,16 +1,35 @@
 # 排除模型文件
 models/
+*.pt
+*.pth
+*.bin
+*.h5
+*.onnx
+*.safetensors
+*.pkl
+*.joblib
 
 # 排除虚拟环境
 .venv/
+venv/
+env/
 
 # 排除Python缓存
 __pycache__/
 *.pyc
+*.pyo
+
+# 排除环境变量 / 敏感配置
+.env
+.env.*
+*.local
 
 # 排除数据文件
 *.xlsx
 *.csv
+*.tsv
+*.parquet
+*.feather
 
 # 排除日志文件
 *.log
@@ -24,3 +43,17 @@ __pycache__/
 # 排除操作系统文件
 .DS_Store
 Thumbs.db
+
+# 排除 node_modules
+node_modules/
+
+# 排除构建产物
+dist/
+build/
+*.egg-info/
+
+# 排除 Jupyter 检查点
+.ipynb_checkpoints/
+
+# 排除 Claude Code 本地配置
+.claude/

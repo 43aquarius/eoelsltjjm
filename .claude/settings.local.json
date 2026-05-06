@@ -15,7 +15,9 @@
       "Bash(nvidia-smi)",
       "Bash(D:/other/tool/anaconda/envs/pytorch/Scripts/pip.exe uninstall:*)",
       "Bash(D:/other/tool/anaconda/envs/pytorch/Scripts/pip.exe install:*)",
-      "Bash(dir /b \"D:\\\\file\\\\work\\\\26tongjijianmo\\\\original\")"
+      "Bash(dir /b \"D:\\\\file\\\\work\\\\26tongjijianmo\\\\original\")",
+      "Bash(git -C \"D:\\\\file\\\\work\\\\26tongjijianmo\" status --short)",
+      "Bash(find \"D:\\\\file\\\\work\\\\26tongjijianmo\" -maxdepth 3 -name \"node_modules\" -o -name \"*.egg-info\" -o -name \"dist\" -o -name \"build\" -o -name \".ipynb_checkpoints\" -o -name \"*.pkl\" -o -name \"*.model\" -o -name \"*.pt\" -o -name \"*.pth\" 2>/dev/null | head -20)"
     ]
   }
 }
