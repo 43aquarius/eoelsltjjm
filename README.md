@@ -1,36 +1,197 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LocalContract - 本地生活实时需求合约与闲置供给匹配系统
 
-## Getting Started
+> **将本地生活服务从推荐转变为承诺**
 
-First, run the development server:
+## 🎯 概述
+
+LocalContract 是一个创新平台，将传统的推荐式本地服务转变为承诺式合约。我们不再只是向用户推荐餐厅，而是自动匹配用户需求与可用商家，生成**确定性服务合约**，包含：
+
+- **价格保障** - 无意外费用，锁定价格
+- **预约承诺** - 保证您在首选时间有座位
+- **服务质量承诺** - 有约束力的质量保证
+- **违约赔偿** - 如果承诺未兑现，自动赔偿
+
+## 🚀 快速开始
+
+### 前置要求
+
+- Node.js 18+
+- npm 或 yarn
+
+### 安装
 
 ```bash
+# 安装依赖
+npm install
+
+# 启动开发服务器
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+打开 [http://localhost:3000](http://localhost:3000) 查看演示（如果端口被占用，会自动使用 3003）。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🌐 多语言支持
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+默认支持中文，可切换至英文：
 
-## Learn More
+- 点击右上角的 **中文/EN** 按钮切换语言
+- 默认显示中文界面
+- 刷新页面后保持选择的语言
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 项目结构
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+local-contract/
+├── app/                          # Next.js 应用路由页面
+│   ├── layout.tsx               # 根布局（含语言提供者）
+│   ├── page.tsx                 # 首页
+│   ├── globals.css              # 设计系统令牌
+│   ├── create/page.tsx          # 需求创建页面
+│   ├── matches/page.tsx         # 匹配结果页面
+│   ├── contract/[id]/page.tsx   # 合约详情页面
+│   ├── merchant/page.tsx        # 商家仪表板
+│   └── dashboard/page.tsx       # 平台仪表板
+├── components/
+│   ├── layout/                  # 布局组件
+│   │   ├── AppShell.tsx
+│   │   ├── Sidebar.tsx
+│   │   └── TopBar.tsx
+│   ├── ui/                      # 设计系统组件
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   ├── Badge.tsx
+│   │   ├── MetricCard.tsx
+│   │   ├── ScoreBar.tsx
+│   │   └── LanguageSwitch.tsx   # 语言切换组件
+│   └── features/                # 功能组件
+│       ├── CommandMenu.tsx
+│       ├── MerchantCard.tsx
+│       └── ContractTimeline.tsx
+├── lib/                         # 核心逻辑
+│   ├── i18n.ts                  # 中英文翻译
+│   ├── LanguageContext.tsx      # 语言状态管理
+│   ├── mock-data.ts             # 12个示例商家
+│   ├── parser.ts                # NLP 需求解析（支持中英文）
+│   ├── matching.ts              # 核心匹配算法
+│   ├── offer-generator.ts       # 要约生成
+│   ├── contract.ts              # 合约生命周期
+│   └── store.ts                 # Zustand 状态管理
+└── types/                       # TypeScript 定义
+    └── index.ts
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎨 设计系统
 
-## Deploy on Vercel
+灵感来自 Linear 的现代暗色美学：
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **背景色**: 深黑色 (#08090A, #0B0D10, #0D0F14)
+- **卡片**: 微妙的凸起表面 (#111318, #151821)
+- **边框**: 超微妙 rgba(255,255,255,0.08)
+- **强调色**: 靛蓝色 (#5E6AD2)
+- **字体**: 高对比度白色文字
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧠 核心算法
+
+### 匹配分数计算
+
+```
+finalScore =
+  demandFitScore * 0.30 +      // 商家满足需求的程度
+  fulfillmentScore * 0.25 +    // 历史可靠性
+  supplyIdleScore * 0.20 +      // 闲置产能利用率
+  priceScore * 0.15 +           // 价格竞争力
+  distanceScore * 0.10 -        // 距离加成
+  riskPenalty                   // 风险调整
+```
+
+### 关键因素
+
+1. **需求匹配度 (30%)**: 菜系匹配、价格区间、容量、特色
+2. **履约率 (25%)**: 历史可靠性、客户满意度
+3. **闲置产能分 (20%)**: 当前可用性、厨房负载、排队时间
+4. **价格分 (15%)**: 基于商家状态的竞争力
+5. **距离分 (10%)**: 与用户位置的接近度
+6. **风险惩罚**: 高排队时间、低库存、高违约率的扣分
+
+## 🎬 演示流程
+
+### 1. 首页
+- 解释价值主张
+- 展示对比：传统模式 vs LocalContract 模式
+- 创建合约的行动号召
+
+### 2. 创建需求
+- **自然语言输入**: 用自然语言输入需求
+- **实时解析**: 观看输入转换为结构化数据
+- **结构化表单**: 替代的表单输入方式
+- **示例需求**: 快速示例
+
+**中文示例输入：**
+> "今晚7点，4人，预算400，安静，不要辣，要包间"
+
+### 3. 匹配结果
+- **分屏视图**: 左侧商家列表，右侧详情
+- **排序选项**: 最佳、最便宜、最可靠、最佳环境
+- **分数明细**: 可视化的评分解释
+- **风险评估**: 低/中/高风险指示器
+- **生成要约**: 有保障的绑定承诺
+
+### 4. 合约详情
+- **合约摘要**: 清晰展示所有承诺
+- **服务承诺**: 商家的绑定保证
+- **赔偿规则**: 自动违约保护
+- **二维码**: 用于场所验证
+- **生命周期模拟**: 演示控制以推进合约状态
+
+### 5. 商家仪表板
+- **实时状态**: 座位可用性、厨房负载、排队时间
+- **绩效指标**: 履约率、满意度、违约率
+- **合约机会**: 传入的需求要约
+- **接受/拒绝控制**: 商家决策界面
+
+### 6. 平台仪表板
+- **关键指标**: 总合约、用户数、收入、匹配分数
+- **性能环**: 转化率、履约率、合规率
+- **每日趋势**: 合约量随时间变化
+- **类别分析**: 按菜系分类的性能
+- **系统洞察**: AI 生成的建议
+
+### 7. 命令菜单 (⌘K)
+- **快速导航**: 跳转到任何页面
+- **演示动作**: 运行快速演示流程
+- **模糊搜索**: 即时查找命令
+
+## 🛠 技术栈
+
+- **框架**: Next.js 14+ 配合 App Router
+- **语言**: TypeScript
+- **样式**: Tailwind CSS 配合自定义设计令牌
+- **状态管理**: Zustand
+- **图标**: Lucide React
+- **无后端**: 所有逻辑在客户端，使用模拟数据
+
+## 📊 模拟数据
+
+五道口地区 12 家真实商家，包括：
+- 日料、中餐、韩餐、泰餐、意大利菜、法餐厅
+- 各种价格区间（经济到高档）
+- 动态状态（座位可用性、厨房负载、排队时间）
+- 绩效指标（履约率、满意度、违约率）
+
+## 🔮 未来增强
+
+- [ ] 真实 NLP 集成用于需求解析
+- [ ] 机器学习用于个性化匹配
+- [ ] 带推送通知的移动应用
+- [ ] 支付集成
+- [ ] 实时位置追踪
+- [ ] 社交功能（评论、分享）
+- [ ] 多语言支持（更多语言）
+
+## 📝 许可证
+
+MIT 许可证 - 随意用于你自己的黑客松或演示。
+
+---
+
+**用 ❤️ 为 Hackathon 2026 构建**
