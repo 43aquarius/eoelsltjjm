@@ -1,0 +1,64 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="问题三求解流程" id="flowq3">
+    <mxGraphModel dx="900" dy="700" grid="1" gridSize="10" page="1" pageWidth="850" pageHeight="900">
+      <root>
+        <mxCell id="0" /><mxCell id="1" parent="0" />
+        <mxCell id="t" value="问题三求解流程：模式 + LP 松弛 + MILP 精化" style="text;html=1;align=center;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="150" y="20" width="520" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="n1" value="开始" style="ellipse;fillColor=#dae8fc;strokeColor=#6c8ebf" vertex="1" parent="1">
+          <mxGeometry x="370" y="70" width="100" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="n2" value="读取 Q2 输出 D_d = Z(2)_d 与 n_{d,k}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" vertex="1" parent="1">
+          <mxGeometry x="290" y="135" width="270" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="n3" value="计算下界 N_LB = max(⌈∑D/23⌉, max D_d)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" vertex="1" parent="1">
+          <mxGeometry x="290" y="195" width="270" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="n4" value="枚举合法 30 日模式&#10;sum=23, 最长连续 1 ≤7" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656" vertex="1" parent="1">
+          <mxGeometry x="290" y="255" width="270" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="n4b" value="767,544 条合法模式" style="text;html=1;align=center;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="580" y="265" width="160" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="n5" value="LP 松弛 (scipy.linprog HiGHS)&#10;min ∑n_p  s.t. P^T n ≥ D, n≥0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656" vertex="1" parent="1">
+          <mxGeometry x="290" y="330" width="270" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="n5b" value="LP 最优 = 581.00" style="text;html=1;align=center;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="580" y="345" width="160" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="n6" value="筛 LP 活跃模式 (n_p &gt; 0)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6" vertex="1" parent="1">
+          <mxGeometry x="290" y="410" width="270" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="n6b" value="14 条活跃模式" style="text;html=1;align=center;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="580" y="415" width="160" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="n7" value="MILP 精化 (CBC)&#10;n_p ∈ Z+ 限定在活跃模式" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450" vertex="1" parent="1">
+          <mxGeometry x="290" y="475" width="270" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="n8" value="N = ∑ n_p；展开 w_{i,d}（N×30）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" vertex="1" parent="1">
+          <mxGeometry x="290" y="555" width="270" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="n9" value="第二阶段：每日 D_d 工人贪心分到 5 班次" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" vertex="1" parent="1">
+          <mxGeometry x="290" y="625" width="270" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="n10" value="校验：23 工作日 / ≤7 连工 / 班次覆盖" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" vertex="1" parent="1">
+          <mxGeometry x="290" y="695" width="270" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="n11" value="导出 q3_solution.json (N=581)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="290" y="765" width="270" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" style="endArrow=classic" edge="1" parent="1" source="n1" target="n2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="endArrow=classic" edge="1" parent="1" source="n2" target="n3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="endArrow=classic" edge="1" parent="1" source="n3" target="n4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="endArrow=classic" edge="1" parent="1" source="n4" target="n5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="endArrow=classic" edge="1" parent="1" source="n5" target="n6"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="endArrow=classic" edge="1" parent="1" source="n6" target="n7"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="endArrow=classic" edge="1" parent="1" source="n7" target="n8"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="endArrow=classic" edge="1" parent="1" source="n8" target="n9"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" style="endArrow=classic" edge="1" parent="1" source="n9" target="n10"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" style="endArrow=classic" edge="1" parent="1" source="n10" target="n11"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
