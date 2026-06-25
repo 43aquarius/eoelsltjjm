@@ -1,0 +1,41 @@
+# ===== 比赛数据（版权 + 文件大，不上传）=====
+初赛数据/
+dataset/
+dataset_*/
+
+# ===== 训练产物 =====
+runs/
+*.pt
+*.onnx
+*.engine
+
+# ===== 推理 / 提交 =====
+submission_*/
+release/
+release_*/
+fp_mining/
+
+# ===== 日志 =====
+*.log
+runs_*.log
+
+# ===== Python =====
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+
+# ===== IDE / OS =====
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# ===== Claude / Codex 缓存 =====
+.claude/
+.codex/
