@@ -122,27 +122,27 @@ export default function MatchResultsPage() {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-14">
         <div>
           <button
             onClick={() => router.back()}
-            className="flex items-center gap-2 text-[#9a7e72] hover:text-[#7b3d2c] transition-colors mb-3"
+            className="flex items-center gap-3 text-[#9a7e72] hover:text-[#7b3d2c] transition-colors mb-4"
           >
-            <ArrowLeft className="w-5 h-5" />
-            <span className="text-base">{t.common.back}</span>
+            <ArrowLeft className="w-6 h-6" />
+            <span className="text-lg">{t.common.back}</span>
           </button>
-          <h1 className="text-4xl font-normal text-[#7b3d2c] font-serif">{t.matches.title}</h1>
-          <p className="text-base text-[#9a7e72] mt-2">
+          <h1 className="text-5xl font-normal text-[#7b3d2c] font-serif">{t.matches.title}</h1>
+          <p className="text-lg text-[#9a7e72] mt-3">
             {t.matches.subtitle.replace('{count}', sortedResults.length.toString())}
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <Filter className="w-5 h-5 text-[#9a7e72]" />
+        <div className="flex items-center gap-4">
+          <Filter className="w-6 h-6 text-[#9a7e72]" />
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as SortOption)}
-            className="px-4 py-2.5 rounded-xl bg-white border border-[rgba(123,61,44,0.08)] text-[#7b3d2c] text-base focus:border-[#e78745] transition-colors"
+            className="px-5 py-3 rounded-2xl bg-white border border-[rgba(123,61,44,0.08)] text-[#7b3d2c] text-lg focus:border-[#e78745] transition-colors"
           >
             {sortOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -153,8 +153,8 @@ export default function MatchResultsPage() {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-1 space-y-4 max-h-[calc(100vh-200px)] overflow-y-auto pr-2 hide-scrollbar">
+      <div className="grid lg:grid-cols-3 gap-10">
+        <div className="lg:col-span-1 space-y-5 max-h-[calc(100vh-200px)] overflow-y-auto pr-2 hide-scrollbar">
           {sortedResults.map((match, index) => (
             <MerchantCard
               key={match.merchant.id}
@@ -166,53 +166,53 @@ export default function MatchResultsPage() {
           ))}
         </div>
 
-        <div className="lg:col-span-2 space-y-8">
+        <div className="lg:col-span-2 space-y-10">
           {selectedMatch && (
             <>
               <Card padding="lg">
-                <CardContent className="p-8">
-                  <div className="flex items-start justify-between mb-8">
-                    <div className="flex items-start gap-5">
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[rgba(123,61,44,0.1)] to-[rgba(123,61,44,0.03)] flex items-center justify-center flex-shrink-0">
-                        <span className="text-3xl font-normal text-[#7b3d2c] font-serif">
+                <CardContent className="p-10">
+                  <div className="flex items-start justify-between mb-10">
+                    <div className="flex items-start gap-6">
+                      <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[rgba(123,61,44,0.1)] to-[rgba(123,61,44,0.03)] flex items-center justify-center flex-shrink-0">
+                        <span className="text-4xl font-normal text-[#7b3d2c] font-serif">
                           #{selectedMatch.rank}
                         </span>
                       </div>
                       <div>
-                        <div className="flex items-center gap-3 mb-3">
-                          <h2 className="text-2xl font-normal text-[#7b3d2c] font-serif">
+                        <div className="flex items-center gap-4 mb-4">
+                          <h2 className="text-3xl font-normal text-[#7b3d2c] font-serif">
                             {selectedMatch.merchant.name}
                           </h2>
                           {selectedMatch.isRecommended && (
                             <Badge variant="primary">{t.matches.recommended}</Badge>
                           )}
                         </div>
-                        <div className="flex items-center gap-5 text-base text-[#9a7e72]">
+                        <div className="flex items-center gap-6 text-lg text-[#9a7e72]">
                           <CategoryBadge category={selectedMatch.merchant.cuisine} />
-                          <span className="flex items-center gap-1.5">
-                            <Star className="w-4 h-4 fill-[#e78745] text-[#e78745]" />
+                          <span className="flex items-center gap-2">
+                            <Star className="w-5 h-5 fill-[#e78745] text-[#e78745]" />
                             {selectedMatch.merchant.rating}
                           </span>
-                          <span className="flex items-center gap-1.5">
-                            <MapPin className="w-4 h-4" />
+                          <span className="flex items-center gap-2">
+                            <MapPin className="w-5 h-5" />
                             {selectedMatch.merchant.location.split(',')[0]}
                           </span>
                         </div>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-4xl font-normal text-[#7b3d2c] font-serif">
+                      <div className="text-5xl font-normal text-[#7b3d2c] font-serif">
                         {selectedMatch.finalScore.toFixed(1)}
                       </div>
-                      <div className="text-base text-[#9a7e72]">
+                      <div className="text-lg text-[#9a7e72]">
                         {t.matches.matchScore}
                       </div>
                     </div>
                   </div>
 
-                  <div className="mb-8">
-                    <h3 className="text-base font-medium text-[#7b3d2c] mb-4 flex items-center gap-2">
-                      <Info className="w-5 h-5 text-[#e78745]" />
+                  <div className="mb-10">
+                    <h3 className="text-lg font-medium text-[#7b3d2c] mb-5 flex items-center gap-3">
+                      <Info className="w-6 h-6 text-[#e78745]" />
                       {t.matches.scoreBreakdown}
                     </h3>
                     <ScoreBreakdown
@@ -226,14 +226,14 @@ export default function MatchResultsPage() {
                     />
                   </div>
 
-                  <div className="p-5 rounded-xl bg-[rgba(231,135,69,0.05)] border border-[rgba(231,135,69,0.1)]">
-                    <div className="flex items-start gap-4">
-                      <Shield className="w-6 h-6 text-[#e78745] mt-0.5 flex-shrink-0" />
+                  <div className="p-6 rounded-2xl bg-[rgba(231,135,69,0.05)] border border-[rgba(231,135,69,0.1)]">
+                    <div className="flex items-start gap-5">
+                      <Shield className="w-7 h-7 text-[#e78745] mt-0.5 flex-shrink-0" />
                       <div>
-                        <div className="text-base font-medium text-[#7b3d2c] mb-2">
+                        <div className="text-lg font-medium text-[#7b3d2c] mb-3">
                           {t.matches.whyMatch}
                         </div>
-                        <p className="text-base text-[#9a7e72] leading-loose">
+                        <p className="text-lg text-[#9a7e72] leading-loose">
                           {selectedMatch.explanation}
                         </p>
                       </div>
@@ -244,10 +244,10 @@ export default function MatchResultsPage() {
 
               {selectedOffer && (
                 <Card className="border-[rgba(34,197,94,0.15)]" padding="lg">
-                  <CardContent className="p-8">
-                    <div className="flex items-center justify-between mb-6">
-                      <h3 className="text-xl font-normal text-[#7b3d2c] flex items-center gap-3 font-serif">
-                        <DollarSign className="w-6 h-6 text-[#22c55e]" />
+                  <CardContent className="p-10">
+                    <div className="flex items-center justify-between mb-8">
+                      <h3 className="text-2xl font-normal text-[#7b3d2c] flex items-center gap-4 font-serif">
+                        <DollarSign className="w-7 h-7 text-[#22c55e]" />
                         {t.matches.offer}
                       </h3>
                       <Badge variant="success">
@@ -255,29 +255,29 @@ export default function MatchResultsPage() {
                       </Badge>
                     </div>
 
-                    <div className="mb-6">
-                      <div className="text-4xl font-normal text-[#7b3d2c] font-serif">
+                    <div className="mb-8">
+                      <div className="text-5xl font-normal text-[#7b3d2c] font-serif">
                         ¥{selectedOffer.price}
-                        <span className="text-lg font-normal text-[#9a7e72] ml-2">
+                        <span className="text-xl font-normal text-[#9a7e72] ml-3">
                           {selectedOffer.priceType === 'per_person' ? t.matches.perPerson : t.matches.total}
                         </span>
                       </div>
                     </div>
 
-                    <div className="space-y-4 mb-6">
-                      <h4 className="text-base font-medium text-[#7b3d2c]">
+                    <div className="space-y-5 mb-8">
+                      <h4 className="text-lg font-medium text-[#7b3d2c]">
                         {t.matches.bindingPromises}
                       </h4>
                       {selectedOffer.promises.slice(0, 3).map((promise, index) => (
                         <div
                           key={index}
-                          className="flex items-start gap-4 p-4 rounded-xl bg-[rgba(123,61,44,0.03)]"
+                          className="flex items-start gap-5 p-5 rounded-2xl bg-[rgba(123,61,44,0.03)]"
                         >
-                          <div className="w-6 h-6 rounded-full bg-[rgba(34,197,94,0.1)] flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <Shield className="w-4 h-4 text-[#22c55e]" />
+                          <div className="w-7 h-7 rounded-full bg-[rgba(34,197,94,0.1)] flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <Shield className="w-5 h-5 text-[#22c55e]" />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <div className="text-base text-[#7b3d2c] leading-relaxed">
+                            <div className="text-lg text-[#7b3d2c] leading-relaxed">
                               {promise.description}
                             </div>
                           </div>
@@ -298,14 +298,14 @@ export default function MatchResultsPage() {
               )}
 
               <Card padding="lg">
-                <CardContent className="p-8">
-                  <h3 className="text-base font-medium text-[#7b3d2c] mb-6">
+                <CardContent className="p-10">
+                  <h3 className="text-lg font-medium text-[#7b3d2c] mb-8">
                     {t.matches.riskAssessment}
                   </h3>
-                  <div className="grid grid-cols-4 gap-4">
-                    <div className="text-center p-5 rounded-xl bg-[rgba(123,61,44,0.03)]">
+                  <div className="grid grid-cols-4 gap-5">
+                    <div className="text-center p-6 rounded-2xl bg-[rgba(123,61,44,0.03)]">
                       <div
-                        className={`text-2xl font-normal ${
+                        className={`text-3xl font-normal ${
                           selectedMatch.riskLevel === 'low'
                             ? 'text-[#22c55e]'
                             : selectedMatch.riskLevel === 'medium'
@@ -319,31 +319,31 @@ export default function MatchResultsPage() {
                           ? t.matches.mediumRisk
                           : t.matches.highRisk}
                       </div>
-                      <div className="text-sm text-[#9a7e72] mt-2">
+                      <div className="text-base text-[#9a7e72] mt-3">
                         {t.matches.riskAssessment}
                       </div>
                     </div>
-                    <div className="text-center p-5 rounded-xl bg-[rgba(123,61,44,0.03)]">
-                      <div className="text-2xl font-normal text-[#7b3d2c]">
+                    <div className="text-center p-6 rounded-2xl bg-[rgba(123,61,44,0.03)]">
+                      <div className="text-3xl font-normal text-[#7b3d2c]">
                         {selectedMatch.merchant.metrics.fulfillmentRate}%
                       </div>
-                      <div className="text-sm text-[#9a7e72] mt-2">
+                      <div className="text-base text-[#9a7e72] mt-3">
                         {t.create.fulfillmentRate}
                       </div>
                     </div>
-                    <div className="text-center p-5 rounded-xl bg-[rgba(123,61,44,0.03)]">
-                      <div className="text-2xl font-normal text-[#7b3d2c]">
+                    <div className="text-center p-6 rounded-2xl bg-[rgba(123,61,44,0.03)]">
+                      <div className="text-3xl font-normal text-[#7b3d2c]">
                         {selectedMatch.merchant.metrics.breachRate}%
                       </div>
-                      <div className="text-sm text-[#9a7e72] mt-2">
+                      <div className="text-base text-[#9a7e72] mt-3">
                         {t.merchant?.breachRate || '违约率'}
                       </div>
                     </div>
-                    <div className="text-center p-5 rounded-xl bg-[rgba(123,61,44,0.03)]">
-                      <div className="text-2xl font-normal text-[#7b3d2c]">
+                    <div className="text-center p-6 rounded-2xl bg-[rgba(123,61,44,0.03)]">
+                      <div className="text-3xl font-normal text-[#7b3d2c]">
                         {selectedMatch.merchant.currentStatus.queueTime}m
                       </div>
-                      <div className="text-sm text-[#9a7e72] mt-2">
+                      <div className="text-base text-[#9a7e72] mt-3">
                         {t.matches.waitTime}
                       </div>
                     </div>

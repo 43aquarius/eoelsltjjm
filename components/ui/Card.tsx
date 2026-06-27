@@ -16,9 +16,9 @@ const variantStyles = {
 
 const paddingStyles = {
   none: 'p-0',
-  sm: 'p-4',
-  md: 'p-5',
-  lg: 'p-6',
+  sm: 'p-5',
+  md: 'p-6',
+  lg: 'p-8',
 };
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
@@ -37,7 +37,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={`
-          rounded-2xl transition-all duration-250
+          rounded-3xl transition-all duration-250
           ${variantStyles[variant]}
           ${paddingStyles[padding]}
           ${hover ? 'hover:border-[rgba(123,61,44,0.15)] hover:shadow-lg hover:shadow-[rgba(123,61,44,0.06)]' : ''}
@@ -54,7 +54,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
 Card.displayName = 'Card';
 
 export function CardHeader({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return <div className={`mb-4 ${className}`}>{children}</div>;
+  return <div className={`mb-6 ${className}`}>{children}</div>;
 }
 
 export function CardTitle({ children, className = '' }: { children: ReactNode; className?: string }) {

@@ -66,23 +66,23 @@ export default function CreateDemandPage() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="mb-12">
-        <h1 className="text-4xl font-normal text-[#7b3d2c] mb-4 font-serif">{t.create.title}</h1>
-        <p className="text-lg text-[#9a7e72] leading-loose">
+    <div className="max-w-7xl mx-auto">
+      <div className="mb-16">
+        <h1 className="text-5xl font-normal text-[#7b3d2c] mb-5 font-serif">{t.create.title}</h1>
+        <p className="text-xl text-[#9a7e72] leading-loose">
           {t.create.subtitle}
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-8">
-        <div className="space-y-8">
+      <div className="grid lg:grid-cols-2 gap-10">
+        <div className="space-y-10">
           <Card padding="lg">
-            <CardContent className="p-8">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-[rgba(231,135,69,0.1)] flex items-center justify-center">
-                  <Sparkles className="w-6 h-6 text-[#e78745]" />
+            <CardContent className="p-10">
+              <div className="flex items-center gap-5 mb-8">
+                <div className="w-14 h-14 rounded-2xl bg-[rgba(231,135,69,0.1)] flex items-center justify-center">
+                  <Sparkles className="w-7 h-7 text-[#e78745]" />
                 </div>
-                <h2 className="text-xl font-normal text-[#7b3d2c] font-serif">
+                <h2 className="text-2xl font-normal text-[#7b3d2c] font-serif">
                   {t.create.naturalInput}
                 </h2>
               </div>
@@ -91,18 +91,18 @@ export default function CreateDemandPage() {
                 value={demandInput}
                 onChange={(e) => setDemandInput(e.target.value)}
                 placeholder={t.create.placeholder}
-                className="w-full h-40 px-5 py-4 rounded-xl bg-[rgba(123,61,44,0.03)] border border-[rgba(123,61,44,0.08)] text-[#7b3d2c] text-base placeholder-[#d4c8be] resize-none focus:border-[#e78745] focus:ring-4 focus:ring-[rgba(231,135,69,0.1)] transition-all leading-loose"
+                className="w-full h-48 px-6 py-5 rounded-2xl bg-[rgba(123,61,44,0.03)] border border-[rgba(123,61,44,0.08)] text-[#7b3d2c] text-lg placeholder-[#d4c8be] resize-none focus:border-[#e78745] focus:ring-4 focus:ring-[rgba(231,135,69,0.1)] transition-all leading-loose"
               />
 
-              <div className="flex items-center justify-between mt-6">
-                <div className="text-base text-[#9a7e72]">
+              <div className="flex items-center justify-between mt-8">
+                <div className="text-lg text-[#9a7e72]">
                   {t.create.tryNatural}
                 </div>
                 <Button
                   onClick={handleGenerateMatches}
                   isLoading={isAnalyzing}
                   disabled={!demandInput.trim()}
-                  rightIcon={<Send className="w-4 h-4" />}
+                  rightIcon={<Send className="w-5 h-5" />}
                   size="md"
                 >
                   {isAnalyzing ? t.create.analyzing : t.create.generateMatches}
@@ -112,20 +112,20 @@ export default function CreateDemandPage() {
           </Card>
 
           <Card padding="lg">
-            <CardContent className="p-8">
-              <h3 className="text-lg font-normal text-[#7b3d2c] mb-6 font-serif">
+            <CardContent className="p-10">
+              <h3 className="text-xl font-normal text-[#7b3d2c] mb-8 font-serif">
                 {t.create.quickExamples}
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {chineseSampleDemands.map((sample, index) => (
                   <button
                     key={index}
                     onClick={() => handleSampleDemand(sample)}
-                    className="w-full text-left px-5 py-4 rounded-xl bg-[rgba(123,61,44,0.02)] hover:bg-[rgba(123,61,44,0.06)] border border-[rgba(123,61,44,0.06)] transition-colors group"
+                    className="w-full text-left px-6 py-5 rounded-2xl bg-[rgba(123,61,44,0.02)] hover:bg-[rgba(123,61,44,0.06)] border border-[rgba(123,61,44,0.06)] transition-colors group"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-base text-[#7b3d2c] leading-relaxed">{sample}</span>
-                      <ChevronRight className="w-5 h-5 text-[#d4c8be] group-hover:text-[#9a7e72] transition-colors flex-shrink-0 ml-2" />
+                      <span className="text-lg text-[#7b3d2c] leading-relaxed">{sample}</span>
+                      <ChevronRight className="w-6 h-6 text-[#d4c8be] group-hover:text-[#9a7e72] transition-colors flex-shrink-0 ml-3" />
                     </div>
                   </button>
                 ))}
@@ -134,19 +134,19 @@ export default function CreateDemandPage() {
           </Card>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-10">
           <Card padding="lg">
-            <CardContent className="p-8">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-3.5 h-3.5 rounded-full bg-[#22c55e] animate-pulse" />
-                <h2 className="text-xl font-normal text-[#7b3d2c] font-serif">
+            <CardContent className="p-10">
+              <div className="flex items-center gap-5 mb-8">
+                <div className="w-4 h-4 rounded-full bg-[#22c55e] animate-pulse" />
+                <h2 className="text-2xl font-normal text-[#7b3d2c] font-serif">
                   {t.create.livePreview}
                 </h2>
               </div>
 
               {parsedPreview ? (
-                <div className="space-y-6">
-                  <pre className="text-base text-[#7b3d2c] whitespace-pre-wrap font-sans leading-loose bg-[rgba(123,61,44,0.02)] p-5 rounded-xl">
+                <div className="space-y-8">
+                  <pre className="text-lg text-[#7b3d2c] whitespace-pre-wrap font-sans leading-loose bg-[rgba(123,61,44,0.02)] p-6 rounded-2xl">
                     {parsedPreview}
                   </pre>
 
@@ -166,21 +166,21 @@ export default function CreateDemandPage() {
                   </div>
                 </div>
               ) : (
-                <div className="text-center py-12 text-[#9a7e72]">
-                  <AlertCircle className="w-10 h-10 mx-auto mb-4 opacity-40" />
-                  <p className="text-base">{t.create.enterDemand}</p>
+                <div className="text-center py-16 text-[#9a7e72]">
+                  <AlertCircle className="w-12 h-12 mx-auto mb-5 opacity-40" />
+                  <p className="text-lg">{t.create.enterDemand}</p>
                 </div>
               )}
             </CardContent>
           </Card>
 
           <Card padding="lg">
-            <CardContent className="p-8">
-              <h3 className="text-lg font-normal text-[#7b3d2c] mb-6 font-serif">
+            <CardContent className="p-10">
+              <h3 className="text-xl font-normal text-[#7b3d2c] mb-8 font-serif">
                 {t.create.matchingAlgorithm}
               </h3>
 
-              <div className="space-y-4">
+              <div className="space-y-5">
                 {[
                   { label: t.create.demandFit, weight: '30%', color: '#7b3d2c' },
                   { label: t.create.fulfillmentRate, weight: '25%', color: '#22c55e' },
@@ -188,15 +188,15 @@ export default function CreateDemandPage() {
                   { label: t.create.priceScore, weight: '15%', color: '#f59e0b' },
                   { label: t.create.distanceScore, weight: '10%', color: '#9a7e72' },
                 ].map((item) => (
-                  <div key={item.label} className="flex items-center gap-4">
+                  <div key={item.label} className="flex items-center gap-5">
                     <div
-                      className="w-4 h-4 rounded-full flex-shrink-0"
+                      className="w-5 h-5 rounded-full flex-shrink-0"
                       style={{ backgroundColor: item.color }}
                     />
-                    <span className="flex-1 text-base text-[#7b3d2c]">
+                    <span className="flex-1 text-lg text-[#7b3d2c]">
                       {item.label}
                     </span>
-                    <span className="text-sm text-[#b8a89c] font-medium">
+                    <span className="text-base text-[#b8a89c] font-medium">
                       {item.weight}
                     </span>
                   </div>
@@ -206,24 +206,24 @@ export default function CreateDemandPage() {
           </Card>
 
           <Card className="bg-gradient-to-br from-[rgba(231,135,69,0.05)] to-transparent border-[rgba(231,135,69,0.1)]" padding="lg">
-            <CardContent className="p-8">
-              <h3 className="text-lg font-normal text-[#7b3d2c] mb-6 font-serif">
+            <CardContent className="p-10">
+              <h3 className="text-xl font-normal text-[#7b3d2c] mb-8 font-serif">
                 {t.create.howItWorksTitle}
               </h3>
-              <ul className="space-y-4 text-base text-[#9a7e72] leading-loose">
-                <li className="flex items-start gap-3">
+              <ul className="space-y-5 text-lg text-[#9a7e72] leading-loose">
+                <li className="flex items-start gap-4">
                   <span className="text-[#e78745] font-medium">1.</span>
                   <span>{t.create.howItWorks1}</span>
                 </li>
-                <li className="flex items-start gap-3">
+                <li className="flex items-start gap-4">
                   <span className="text-[#e78745] font-medium">2.</span>
                   <span>{t.create.howItWorks2}</span>
                 </li>
-                <li className="flex items-start gap-3">
+                <li className="flex items-start gap-4">
                   <span className="text-[#e78745] font-medium">3.</span>
                   <span>{t.create.howItWorks3}</span>
                 </li>
-                <li className="flex items-start gap-3">
+                <li className="flex items-start gap-4">
                   <span className="text-[#e78745] font-medium">4.</span>
                   <span>{t.create.howItWorks4}</span>
                 </li>

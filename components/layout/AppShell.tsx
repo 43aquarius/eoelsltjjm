@@ -17,7 +17,7 @@ export function AppShell({ children }: AppShellProps) {
         className="min-h-screen"
         style={{ marginLeft: 'var(--sidebar-width)', paddingTop: 'var(--topbar-height)' }}
       >
-        <div className="p-6 lg:p-8 max-w-7xl mx-auto">{children}</div>
+        <div className="p-8 lg:p-10 max-w-7xl mx-auto">{children}</div>
       </main>
     </div>
   );

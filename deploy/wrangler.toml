@@ -1,0 +1,19 @@
+# ============================================
+# Cloudflare Pages 配置文件
+# 使用 Wrangler CLI 部署时参考此配置
+# ============================================
+
+name = "local-contract"
+compatibility_date = "2024-01-01"
+
+# 静态资源上传配置
+[site]
+bucket = "./dist"
+
+# 构建命令（在 Cloudflare Dashboard Git 集成时使用）
+# 构建命令: npm run build
+# 输出目录: dist
+
+# 环境变量（如需要）
+[vars]
+NEXT_PUBLIC_SITE_URL = "https://local-contract.pages.dev"

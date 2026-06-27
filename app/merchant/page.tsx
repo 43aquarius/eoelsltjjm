@@ -79,26 +79,26 @@ export default function MerchantPage() {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="mb-12">
-        <h1 className="text-4xl font-normal text-[#7b3d2c] mb-4 font-serif">
+      <div className="mb-16">
+        <h1 className="text-5xl font-normal text-[#7b3d2c] mb-5 font-serif">
           {t.merchant?.title || '商家仪表板'}
         </h1>
-        <p className="text-lg text-[#a89588] leading-loose">
+        <p className="text-xl text-[#a89588] leading-loose">
           {t.merchant?.subtitle || '实时查看您的业务状态和合约机会'}
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-8 mb-12">
+      <div className="grid grid-cols-3 gap-10 mb-16">
         {metrics.map((metric, index) => {
           const Icon = metric.icon;
           return (
-            <Card key={index} padding="md">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-base text-[#a89588]">{metric.label}</span>
-                  <Icon className="w-5 h-5 text-[#c4b5a9]" />
+            <Card key={index} padding="lg">
+              <CardContent className="p-8">
+                <div className="flex items-center justify-between mb-5">
+                  <span className="text-lg text-[#a89588]">{metric.label}</span>
+                  <Icon className="w-6 h-6 text-[#c4b5a9]" />
                 </div>
-                <div className={`text-3xl font-normal ${colorClasses[metric.color]} font-serif`}>
+                <div className={`text-4xl font-normal ${colorClasses[metric.color]} font-serif`}>
                   {metric.value}
                 </div>
               </CardContent>
@@ -107,52 +107,52 @@ export default function MerchantPage() {
         })}
       </div>
 
-      <div className="grid grid-cols-3 gap-8 mb-12">
-        <Card padding="md">
-          <CardContent className="p-6">
-            <div className="text-base text-[#a89588] mb-3">
+      <div className="grid grid-cols-3 gap-10 mb-16">
+        <Card padding="lg">
+          <CardContent className="p-8">
+            <div className="text-lg text-[#a89588] mb-4">
               {t.merchant?.fulfillmentRate || '履约率'}
             </div>
-            <div className="text-3xl font-normal text-[#16a34a] font-serif">98.5%</div>
+            <div className="text-4xl font-normal text-[#16a34a] font-serif">98.5%</div>
           </CardContent>
         </Card>
-        <Card padding="md">
-          <CardContent className="p-6">
-            <div className="text-base text-[#a89588] mb-3">
+        <Card padding="lg">
+          <CardContent className="p-8">
+            <div className="text-lg text-[#a89588] mb-4">
               {t.merchant?.customerSatisfaction || '客户满意度'}
             </div>
-            <div className="text-3xl font-normal text-[#7b3d2c] font-serif">4.8/5.0</div>
+            <div className="text-4xl font-normal text-[#7b3d2c] font-serif">4.8/5.0</div>
           </CardContent>
         </Card>
-        <Card padding="md">
-          <CardContent className="p-6">
-            <div className="text-base text-[#a89588] mb-3">
+        <Card padding="lg">
+          <CardContent className="p-8">
+            <div className="text-lg text-[#a89588] mb-4">
               {t.merchant?.breachRate || '违约率'}
             </div>
-            <div className="text-3xl font-normal text-[#d97706] font-serif">0.3%</div>
+            <div className="text-4xl font-normal text-[#d97706] font-serif">0.3%</div>
           </CardContent>
         </Card>
       </div>
 
       <Card padding="lg">
-        <CardContent className="p-8">
-          <div className="flex items-center gap-4 mb-8">
-            <Activity className="w-6 h-6 text-[#e78745]" />
-            <h2 className="text-xl font-normal text-[#7b3d2c] font-serif">
+        <CardContent className="p-10">
+          <div className="flex items-center gap-5 mb-10">
+            <Activity className="w-7 h-7 text-[#e78745]" />
+            <h2 className="text-2xl font-normal text-[#7b3d2c] font-serif">
               {t.merchant?.contractOpportunities || '合约机会'}
             </h2>
           </div>
-          <div className="space-y-5">
+          <div className="space-y-6">
             {opportunities.map((opp) => (
               <div
                 key={opp.id}
-                className="flex items-center justify-between p-5 rounded-xl bg-[rgba(123,61,44,0.03)] border border-[rgba(123,61,44,0.06)]"
+                className="flex items-center justify-between p-6 rounded-2xl bg-[rgba(123,61,44,0.03)] border border-[rgba(123,61,44,0.06)]"
               >
-                <div className="flex-1 min-w-0 mr-5">
-                  <div className="flex items-center gap-4 mb-3">
-                    <span className="text-base text-[#7b3d2c] font-medium">{opp.customer}</span>
+                <div className="flex-1 min-w-0 mr-6">
+                  <div className="flex items-center gap-5 mb-4">
+                    <span className="text-lg text-[#7b3d2c] font-medium">{opp.customer}</span>
                     <span
-                      className={`px-2.5 py-1 rounded-lg text-sm font-medium ${
+                      className={`px-3 py-1.5 rounded-xl text-base font-medium ${
                         opp.matchScore >= 85
                           ? 'bg-[rgba(74,222,128,0.12)] text-[#16a34a]'
                           : opp.matchScore >= 70
@@ -163,23 +163,23 @@ export default function MerchantPage() {
                       {opp.matchScore}%
                     </span>
                   </div>
-                  <div className="text-base text-[#a89588] truncate leading-relaxed">{opp.demand}</div>
+                  <div className="text-lg text-[#a89588] truncate leading-relaxed">{opp.demand}</div>
                 </div>
-                <div className="flex items-center gap-3 flex-shrink-0">
+                <div className="flex items-center gap-4 flex-shrink-0">
                   {opp.status === 'pending' ? (
                     <>
-                      <Button size="md" variant="secondary">
+                      <Button size="lg" variant="secondary">
                         <CheckCircle className="w-5 h-5" />
                         {t.merchant?.accept || '接受'}
                       </Button>
-                      <Button size="md" variant="danger">
+                      <Button size="lg" variant="danger">
                         <XCircle className="w-5 h-5" />
                         {t.merchant?.reject || '拒绝'}
                       </Button>
                     </>
                   ) : (
-                    <span className="flex items-center gap-2 text-base text-[#16a34a]">
-                      <CheckCircle className="w-5 h-5" />
+                    <span className="flex items-center gap-3 text-lg text-[#16a34a]">
+                      <CheckCircle className="w-6 h-6" />
                       已接受
                     </span>
                   )}
